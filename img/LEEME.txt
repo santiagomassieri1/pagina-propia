@@ -1,0 +1,26 @@
+IMAGENES DEL SITIO
+==================
+
+Los proyectos ya no usan capturas de pantalla: el codigo se muestra como texto
+con resaltado de sintaxis y la consola es interactiva de verdad (Pyodide).
+Asi que en esta carpeta va una sola imagen.
+
+  preview.png   -> imagen que se ve cuando compartis el link por WhatsApp,
+                   LinkedIn, X, etc. (la etiqueta og:image del index.html)
+
+Recomendaciones para preview.png
+--------------------------------
+- Tamano: 1200 x 630 px (es el estandar que esperan las redes).
+- Formato PNG o JPG, menos de 1 MB.
+- Que se lea bien chica: tu nombre y una linea corta alcanzan.
+
+Importante
+----------
+Para que las redes la levanten, la etiqueta og:image necesita la URL completa,
+no la ruta relativa. Cuando tengas el dominio de Vercel, en index.html cambia:
+
+  <meta property="og:image" content="img/preview.png">
+
+por:
+
+  <meta property="og:image" content="https://TU-SITIO.vercel.app/img/preview.png">

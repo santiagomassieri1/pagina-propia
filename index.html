@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Santiago Massieri — Finanzas y Python</title>
+<meta name="description" content="Estudiante de Ciencias del Comportamiento en la Universidad de Palermo. Python aplicado a finanzas, con proyectos propios ejecutables en el navegador.">
+<meta name="theme-color" content="#123a5c">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Santiago Massieri — Finanzas y Python">
+<meta property="og:description" content="Estudiante de Ciencias del Comportamiento. Python aplicado a finanzas, con proyectos propios.">
+<meta property="og:url" content="https://santiago-massieri.vercel.app/">
+<!-- og:image tiene que ser URL absoluta: las redes no resuelven rutas relativas. -->
+<meta property="og:image" content="https://santiago-massieri.vercel.app/img/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Santiago Massieri — Estudiante de Ciencias del Comportamiento. Finanzas e Inversiones, Python, IA Generativa.">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23123a5c'/%3E%3Ctext x='16' y='22' font-family='Segoe UI,Arial,sans-serif' font-size='14' font-weight='600' fill='%23ffffff' text-anchor='middle'%3ESM%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- Marca que hay JS ANTES de pintar: sin esto, si el JS falla, los elementos
+     con animacion de entrada quedarian invisibles para siempre. -->
+<script>document.documentElement.className += " js";</script>
+</head>
+<body>
+
+<a class="skip-link" href="#proyectos">Ir a proyectos</a>
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+  <div class="wrap" data-stagger>
+    <p class="eyebrow reveal">Perfil profesional</p>
+    <h1 class="name reveal">Santiago Massieri</h1>
+    <p class="headline reveal">
+      <span>Estudiante de Ciencias del Comportamiento</span>
+      <span class="sep" aria-hidden="true">/</span>
+      <span>Finanzas e Inversiones</span>
+      <span class="sep" aria-hidden="true">/</span>
+      <span>Python</span>
+      <span class="sep" aria-hidden="true">/</span>
+      <span>IA Generativa</span>
+    </p>
+
+    <div class="actions reveal">
+      <a class="btn btn--solid" href="cv/Santiago-Massieri-CV-ES.pdf" download title="Currículum en español, formato PDF">
+        <svg class="btn-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 13.5h12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Descargar CV (Español)
+      </a>
+      <a class="btn" href="cv/Santiago-Massieri-CV-EN.pdf" download title="Résumé in English, PDF format">
+        <svg class="btn-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 13.5h12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Download CV (English)
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ SOBRE MI ============ -->
+  <section class="section section--compact" aria-labelledby="sobre-mi-title">
+    <div class="wrap" data-stagger>
+      <h2 class="section-title reveal" id="sobre-mi-title">Sobre mí</h2>
+      <p class="lede reveal">
+        Estudiante de primer año de la Licenciatura en Ciencias del Comportamiento en la
+        Universidad de Palermo, una carrera interdisciplinaria que combina psicología,
+        neurociencia, economía del comportamiento y tecnología aplicadas a la toma de decisiones.
+      </p>
+      <p class="lede reveal">
+        Estudio Python aplicado a finanzas por mi cuenta y lo uso en proyectos propios. Gestiono
+        de forma activa mi portafolio de inversiones desde hace varios meses y trabajo a diario
+        con herramientas de IA generativa, tanto para productividad como para desarrollo de
+        productos digitales.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ PROYECTOS (seccion destacada) ============ -->
+  <section class="section section--projects" id="proyectos" aria-labelledby="proyectos-title">
+    <div class="wrap">
+
+      <header class="projects-head" data-stagger>
+        <h2 class="section-title section-title--lg reveal" id="proyectos-title">Proyectos</h2>
+        <p class="projects-intro reveal">
+          Tres scripts propios en Python, escritos para responder preguntas concretas sobre
+          finanzas, inversiones y mi propio proceso de estudio. El código de la izquierda es
+          exactamente el que se ejecuta en la terminal de la derecha: corre en el navegador,
+          sin instalar nada.
+        </p>
+      </header>
+
+      <ol class="projects" data-stagger>
+
+        <!-- Proyecto 01 -->
+        <li class="project reveal">
+          <div class="project-head">
+            <span class="project-num" aria-hidden="true">01</span>
+            <div class="project-heading-text">
+              <h3 class="project-title">Calculadora de interés compuesto</h3>
+              <p class="project-meta">Python · Script de consola</p>
+            </div>
+          </div>
+          <p class="project-desc">
+            Simula el crecimiento de una inversión a partir del capital inicial, el aporte mensual
+            y el horizonte en años, y compara cinco escenarios de rendimiento anual, del 8% al 17%.
+            El objetivo fue dimensionar cuánto pesa el aporte constante frente a la tasa en el
+            resultado a largo plazo.
+          </p>
+
+          <div class="shots">
+            <!-- Codigo fuente -->
+            <figure class="shot">
+              <div class="frame frame--editor">
+                <div class="frame-bar">
+                  <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="frame-file">interes_compuesto.py</span>
+                </div>
+                <div class="frame-body frame-body--code">
+<pre class="code"><code class="language-python" id="codigo-1">dato_valido=False
+while dato_valido==False:
+    try:
+        capital_inicial=float(input("¿Cual es tu capital inicial en dólares?$"))
+        dato_valido=True
+    except ValueError:
+        print("Ese no es un numero valido")
+dato_valido=False
+while dato_valido==False:
+    try:
+        aporte_mensual=float(input("¿Cuanto podes aportar mensualmente a la cartera en dólares?$"))
+        dato_valido=True
+    except ValueError:
+        print("Ese no es un numero valido")
+dato_valido=False
+while dato_valido==False:
+    try:
+        años=int(input("¿Que cantidad de años estas dispuesto a mantener la inversión?"))
+        dato_valido=True
+    except ValueError:
+        print("Ese no es un numero valido")
+
+tasas_a_comparar=[8, 10, 12, 14, 17]
+
+def simular_ahorro(capital_inicial, aporte_mensual, años, tasa):
+    capital=capital_inicial
+    for i in range(años):
+        capital=capital+(aporte_mensual*12)
+        capital=capital*(1+tasa/100)
+        print(f"Año {i+1}: ${round(capital, 2)} en dólares")
+    return capital
+
+for tasa in tasas_a_comparar:
+    print(f"Escenario con {tasa}% de rendimiento anual:")
+    resultado_final=simular_ahorro(capital_inicial, aporte_mensual, años, tasa)
+    print(f"Resultado final con un rendimiento del {tasa}%: ${round(resultado_final, 2)} en dólares")
+
+y=input('press enter')
+</code></pre>
+                </div>
+              </div>
+              <figcaption>Código fuente</figcaption>
+            </figure>
+
+            <!-- Consola interactiva -->
+            <figure class="shot">
+              <div class="frame frame--terminal">
+                <div class="frame-bar">
+                  <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="frame-file">consola — python interes_compuesto.py</span>
+                  <button type="button" class="frame-run" data-codigo="codigo-1" data-term="term-1">▶ Ejecutar</button>
+                </div>
+                <div class="frame-body frame-body--term">
+                  <div class="term" id="term-1" role="log" aria-live="polite" aria-label="Consola interactiva de la calculadora de interés compuesto">
+                    <div class="term-line term-sys">$ python interes_compuesto.py</div>
+                    <div class="term-line term-sys">Presioná ▶ Ejecutar para correr el script con Python real en el navegador.</div>
+                  </div>
+                </div>
+              </div>
+              <figcaption>Consola interactiva — Python real en el navegador</figcaption>
+            </figure>
+          </div>
+        </li>
+
+        <!-- Proyecto 02 -->
+        <li class="project reveal">
+          <div class="project-head">
+            <span class="project-num" aria-hidden="true">02</span>
+            <div class="project-heading-text">
+              <h3 class="project-title">Evaluador de CEDEARs</h3>
+              <p class="project-meta">Python · Script de consola</p>
+            </div>
+          </div>
+          <p class="project-desc">
+            Analiza el rendimiento de una cartera de CEDEARs y calcula la ganancia en pesos y en
+            dólares, ajustando por el dólar CCL del momento de compra contra el actual. Según el
+            resultado, sugiere mantener, vender o esperar. Surgió de aplicar Python a una cartera
+            que ya venía siguiendo de cerca: la mía.
+          </p>
+
+          <div class="shots">
+            <figure class="shot">
+              <div class="frame frame--editor">
+                <div class="frame-bar">
+                  <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="frame-file">evaluador_cedears.py</span>
+                </div>
+                <div class="frame-body frame-body--code">
+<pre class="code"><code class="language-python" id="codigo-2">dato_valido=False
+while dato_valido==False:
+    try:
+        cantidad_acciones=int(input("¿Cuantas acciones distintas tenes en cartera y queres evaluar?"))
+        dato_valido=True
+    except ValueError:
+        print("Eso no es un número valido")
+dato_valido=False
+while dato_valido==False:
+    try:
+        ccl_actual=float(input("Valor del dólar CCL actual:"))
+        dato_valido=True
+    except ValueError:
+        print("Eso no es un numero valido")
+
+def evaluar_cedear(ticker, precio_compra, precio_actual, cantidad, ccl_compra, ccl_actual):
+    ganancia_porcentual_pesos=((precio_actual-precio_compra)/precio_compra)*100
+    precio_compra_usd=precio_compra/ccl_compra
+    precio_actual_usd=precio_actual/ccl_actual
+    ganancia_porcentual_usd=((precio_actual_usd-precio_compra_usd)/precio_compra_usd)*100
+    ganancia_pesos_total=(precio_actual-precio_compra)*cantidad
+    print("Ticker:", ticker)
+    print("Ganancia en pesos:", round(ganancia_porcentual_pesos, 2), "%")
+    print("Ganancia en dólares", round(ganancia_porcentual_usd, 2), "%")
+    print("Ganancia total en pesos", round(ganancia_pesos_total, 2))
+    if ganancia_porcentual_usd&gt;15:
+        print("Recomendación: Excelente, considerar vender")
+    elif ganancia_porcentual_usd&gt;=0:
+        print("Recomendación: Mantener")
+    else:
+        print("Recomendación: Esperar")
+for i in range(cantidad_acciones):
+    ticker=input("Ticker;")
+    dato_valido=False
+    while dato_valido==False:
+        try:
+            precio_compra=float(input("Precio de compra (en pesos):"))
+            dato_valido=True
+        except ValueError:
+            print("Eso no es un numero valido")
+    dato_valido=False
+    while dato_valido==False:
+        try:
+            precio_actual=float(input("Precio actual (en pesos):"))
+            dato_valido=True
+        except ValueError:
+            print("Eso no es un numero valido")
+    dato_valido=False
+    while dato_valido==False:
+        try:
+            cantidad=int(input("Cantidad de acciones que tenes:"))
+            dato_valido=True
+        except ValueError:
+            print("Eso no es un numero valida")
+    dato_valido=False
+    while dato_valido==False:
+        try:
+            ccl_compra=float(input("Valor del CCL al momento de compra:"))
+            dato_valido=True
+        except ValueError:
+            print("Eso no es un numero valido")
+    evaluar_cedear(ticker, precio_compra, precio_actual, cantidad, ccl_compra, ccl_actual)
+
+    input('\nPresioná Enter para salir')
+</code></pre>
+                </div>
+              </div>
+              <figcaption>Código fuente</figcaption>
+            </figure>
+
+            <figure class="shot">
+              <div class="frame frame--terminal">
+                <div class="frame-bar">
+                  <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="frame-file">consola — python evaluador_cedears.py</span>
+                  <button type="button" class="frame-run" data-codigo="codigo-2" data-term="term-2">▶ Ejecutar</button>
+                </div>
+                <div class="frame-body frame-body--term">
+                  <div class="term" id="term-2" role="log" aria-live="polite" aria-label="Consola interactiva del evaluador de CEDEARs">
+                    <div class="term-line term-sys">$ python evaluador_cedears.py</div>
+                    <div class="term-line term-sys">Presioná ▶ Ejecutar para correr el script con Python real en el navegador.</div>
+                  </div>
+                </div>
+              </div>
+              <figcaption>Consola interactiva — Python real en el navegador</figcaption>
+            </figure>
+          </div>
+        </li>
+
+        <!-- Proyecto 03 -->
+        <li class="project reveal">
+          <div class="project-head">
+            <span class="project-num" aria-hidden="true">03</span>
+            <div class="project-heading-text">
+              <h3 class="project-title">Evaluador de preguntas</h3>
+              <p class="project-meta">Python · Script de consola</p>
+            </div>
+          </div>
+          <p class="project-desc">
+            Genera un autotest de conceptos de programación —funciones, loops, print— a partir de
+            un diccionario de términos y definiciones, con corrección manual de cada respuesta.
+            Lo uso para repasar contenidos mientras avanzo con Python por mi cuenta.
+          </p>
+
+          <div class="shots">
+            <figure class="shot">
+              <div class="frame frame--editor">
+                <div class="frame-bar">
+                  <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="frame-file">evaluador_preguntas.py</span>
+                </div>
+                <div class="frame-body frame-body--code">
+<pre class="code"><code class="language-python" id="codigo-3">import os
+
+terminos={
+    "¿Que es una función": "Es un conjunto de instrucciones al que le pones nombre y la podes utilizar las veces que quieras",
+    "¿Para que sirve un loop y cuales son sus tipos?": "Sirven para cuando tenes que repetir algo varias veces. Podemos encontrar el for y el while",
+    "Que hace el print": "Muestra las operaciones que se realizan detras de la pantalla, las hace visibles",
+}
+
+aciertos=0
+total=len(terminos)
+
+for termino in terminos:
+    os.system('cls')
+    print(f"Termino: {termino}")
+    respuesta_usuario=input("Tu definición:")
+    print(f"Definicón correcta: {terminos[termino]}")
+    acerte=input("¿Acertaste? (s/n):")
+    if acerte=="s":
+        aciertos=aciertos+1
+
+os.system('cls')
+print(f"Resultado: {aciertos} de {total} aciertos")
+
+y = input("press enter")
+</code></pre>
+                </div>
+              </div>
+              <figcaption>Código fuente</figcaption>
+            </figure>
+
+            <figure class="shot">
+              <div class="frame frame--terminal">
+                <div class="frame-bar">
+                  <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="frame-file">consola — python evaluador_preguntas.py</span>
+                  <button type="button" class="frame-run" data-codigo="codigo-3" data-term="term-3">▶ Ejecutar</button>
+                </div>
+                <div class="frame-body frame-body--term">
+                  <div class="term" id="term-3" role="log" aria-live="polite" aria-label="Consola interactiva del evaluador de preguntas">
+                    <div class="term-line term-sys">$ python evaluador_preguntas.py</div>
+                    <div class="term-line term-sys">Presioná ▶ Ejecutar para correr el script con Python real en el navegador.</div>
+                  </div>
+                </div>
+              </div>
+              <figcaption>Consola interactiva — Python real en el navegador</figcaption>
+            </figure>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ HERRAMIENTAS ============ -->
+  <section class="section section--compact" aria-labelledby="herramientas-title">
+    <div class="wrap">
+      <h2 class="section-title reveal" id="herramientas-title">Herramientas que uso</h2>
+      <ul class="chips" data-stagger>
+        <li class="chip reveal">Python</li>
+        <li class="chip reveal">Claude Code</li>
+        <li class="chip reveal">Notebook LM</li>
+        <li class="chip reveal">Claude</li>
+        <li class="chip reveal">ChatGPT</li>
+        <li class="chip reveal">Gemini</li>
+        <li class="chip reveal">Lovable</li>
+        <li class="chip reveal">Excel</li>
+        <li class="chip reveal">Microsoft 365</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ QUE ESTOY BUSCANDO ============ -->
+  <section class="section section--compact" aria-labelledby="buscando-title">
+    <div class="wrap" data-stagger>
+      <h2 class="section-title reveal" id="buscando-title">Qué estoy buscando</h2>
+      <p class="statement reveal">
+        Busco mi primera experiencia profesional, part-time o remota, en equipos donde pueda
+        aplicar y seguir desarrollando estas habilidades.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="section section--contact" id="contacto" aria-labelledby="contacto-title">
+    <div class="wrap" data-stagger>
+      <h2 class="section-title reveal" id="contacto-title">Contacto</h2>
+      <ul class="contact-list reveal">
+        <li>
+          <span class="contact-label">LinkedIn</span>
+          <a class="contact-link" href="https://linkedin.com/in/santiagomassieri" target="_blank" rel="noopener noreferrer">linkedin.com/in/santiagomassieri</a>
+        </li>
+        <li>
+          <span class="contact-label">Email</span>
+          <a class="contact-link" href="mailto:santiagomassieri1@gmail.com">santiagomassieri1@gmail.com</a>
+        </li>
+        <li>
+          <span class="contact-label">CV</span>
+          <span class="contact-files">
+            <a class="contact-link" href="cv/Santiago-Massieri-CV-ES.pdf" download>Español (PDF)</a>
+            <span class="contact-sep" aria-hidden="true">·</span>
+            <a class="contact-link" href="cv/Santiago-Massieri-CV-EN.pdf" download>English (PDF)</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Santiago Massieri · Buenos Aires, Argentina</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+<script src="js/anim.js" defer></script>
+<script src="js/runner.js" defer></script>
+
+</body>
+</html>

@@ -116,20 +116,30 @@ Todo el texto está en `index.html`, en secciones marcadas con comentarios
 
 Para sumar una herramienta, agregá un `<li class="chip">Nombre</li>` dentro de `<ul class="chips">`.
 
-## Deploy en Vercel
+## Deploy
 
-**Opción A — sin Git (lo más rápido):**
+El sitio está en **https://santiago-massieri.vercel.app** y se publica solo.
 
-1. Entrá a [vercel.com/new](https://vercel.com/new).
-2. Arrastrá la carpeta entera del proyecto a la zona de "deploy".
-3. Vercel detecta un sitio estático solo. No configures build command ni output directory.
+El repo `santiagomassieri1/pagina-propia` está conectado al proyecto de Vercel
+`santiago-massieri`. Cada push a la rama `main` dispara un deploy a producción:
 
-**Opción B — con GitHub (recomendado si vas a seguir editando):**
+```bash
+git add -A
+```
 
-1. Subí la carpeta a un repo de GitHub.
-2. En Vercel: *Add New → Project → Import* ese repo.
-3. Framework Preset: **Other**. Build Command: vacío. Output Directory: vacío (raíz).
-4. Deploy. Cada `git push` vuelve a publicar solo.
+```bash
+git commit -m "lo que cambiaste"
+```
+
+```bash
+git push
+```
+
+No hay build: es un sitio estático y Vercel sirve los archivos tal cual. No configures
+build command ni output directory.
+
+Si algún deploy falla, el detalle está en el panel de Vercel, en la pestaña
+*Deployments* del proyecto.
 
 ## Colores
 

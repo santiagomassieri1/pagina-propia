@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# El CV se puede descargar, pero no queremos que Google lo indexe:
+# el PDF incluye telefono y direccion, y quedarian buscables.
+Disallow: /cv/
+
+Sitemap: https://santiago-massieri.vercel.app/sitemap.xml

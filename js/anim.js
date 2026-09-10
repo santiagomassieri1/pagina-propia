@@ -20,23 +20,46 @@
      de "abajo de la pantalla" a "arriba de la pantalla" sin que
      el observer lo vea nunca intersectando, y quedaria escondido
      para siempre. Por eso hay un barrido de respaldo en scroll.
+   - Ese barrido revela SIN animar: si el elemento ya paso de largo, la
+     transicion no la ve nadie, y si el usuario vuelve para arriba se
+     encontraria una card a medio aparecer sin haber hecho nada.
    ========================================================= */
 
 (function () {
   'use strict';
 
-  var PASO = 70;      // ms de diferencia entre hermanos de un grupo
-  var TOPE = 6;       // no escalonar mas alla de esto: se haria lento
+  var PASO = 45;      // ms de diferencia entre hermanos de un grupo
+  var TOPE = 4;       // no escalonar mas alla de esto: se haria lento
+  var DURACION = 380; // la transicion mas larga del CSS. Si cambia alla hay
+                      // que cambiarla aca: de esto sale el plazo de limpieza.
 
-  function revelar(nodo) {
+  function revelar(nodo, sinAnimar) {
     if (nodo.classList.contains('is-visible')) return;
+
+    // Camino de la red de seguridad: aparecer y listo, sin transicion.
+    if (sinAnimar) {
+      nodo.style.transitionDelay = '';
+      nodo.classList.add('no-anim');
+      nodo.classList.add('is-visible');
+      return;
+    }
+
+    // will-change promueve el elemento a su propia capa de composicion. Se
+    // pone justo antes de mover y se saca al terminar: dejarlo fijo mantiene
+    // la capa viva para siempre, y son 26 elementos.
+    nodo.style.willChange = 'opacity, transform';
     nodo.classList.add('is-visible');
 
     // El delay solo sirve para la entrada. Si queda puesto, cualquier
     // transicion posterior (hover, por ejemplo) arrancaria tarde.
+    // El plazo sale de las constantes en vez de ser un numero suelto, y se
+    // cuenta desde el delay propio de este elemento, no desde el del ultimo
+    // hermano del grupo.
+    var propio = parseFloat(nodo.style.transitionDelay) || 0;
     window.setTimeout(function () {
       nodo.style.transitionDelay = '';
-    }, 900);
+      nodo.style.willChange = '';
+    }, propio + DURACION + 120);
   }
 
   function iniciar() {
@@ -69,7 +92,7 @@
     var observador = new IntersectionObserver(function (entradas) {
       for (var i = 0; i < entradas.length; i++) {
         if (!entradas[i].isIntersecting) continue;
-        revelar(entradas[i].target);
+        revelar(entradas[i].target, false);
         observador.unobserve(entradas[i].target);
       }
     }, {
@@ -101,7 +124,7 @@
         // va a revelar nunca. Lo que esta a la vista se deja para el observer,
         // que es el que le da la animacion de entrada.
         if (nodo.getBoundingClientRect().bottom <= 0) {
-          revelar(nodo);
+          revelar(nodo, true);
           observador.unobserve(nodo);
         } else {
           quedan.push(nodo);

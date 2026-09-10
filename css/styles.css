@@ -1,6 +1,6 @@
 /* =========================================================
    Santiago Massieri — one-pager
-   Paleta sobria, acento azul marino. Sin animaciones.
+   Paleta sobria, acento azul marino. Movimiento minimo.
    ========================================================= */
 
 :root {
@@ -30,28 +30,57 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+/* Sin scroll-behavior: smooth a proposito. Un salto de ancla animado dura
+   cerca de un segundo, en Safari no se puede cortar con la rueda, y de paso
+   dispara en cascada todos los .reveal que atraviesa. Para volver atras,
+   agregar scroll-behavior: smooth aca. */
+html { -webkit-text-size-adjust: 100%; }
 
 /* ---------------------------------------------------------
    ANIMACIONES DE ENTRADA
    Solo se esconden si hay JS (clase .js en <html>): si el script
    fallara, el contenido igual se ve. anim.js agrega .is-visible.
    --------------------------------------------------------- */
+/* La opacidad termina antes que el desplazamiento a proposito: el texto ya es
+   solido y legible mientras el elemento todavia se esta asentando. Si las dos
+   van parejas, el ojo ve un bloque translucido moviendose, que es justo lo que
+   se registra como "animacion". */
 .js .reveal {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 620ms cubic-bezier(0.22, 0.61, 0.36, 1),
-              transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: opacity 240ms linear,
+              transform 380ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 .js .reveal.is-visible {
   opacity: 1;
   transform: none;
 }
 
-/* Si el sistema pide menos movimiento, no se anima nada. */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+/* Las cards de proyecto son bloques de 600px+ con una terminal y un bloque de
+   codigo adentro. Desplazarlas obliga a recomponer todo ese subarbol en cada
+   frame y el monoespaciado se resamplea borroso durante todo el trayecto.
+   Los 14px no aportan nada en un bloque de ese tamanio: solo opacidad. */
+.js .project.reveal {
+  transform: none;
+  transition: opacity 260ms linear;
+}
 
+/* Con esta clase revela el barrido de respaldo de anim.js: el elemento ya
+   quedo arriba de la pantalla, asi que la transicion no la veria nadie y solo
+   puede sorprender si el usuario vuelve para arriba a mitad de camino.
+   Va ultima: tiene que ganarle tambien a .project.reveal. */
+.js .reveal.no-anim {
+  transition: none;
+}
+
+/* Si el sistema pide menos movimiento, no se mueve nada: los .reveal quedan
+   visibles de entrada y sin transicion.
+
+   Pero "menos movimiento" no es "nada de feedback". Un cambio de color corto
+   no produce vertigo y sigue avisando que algo respondio, asi que en vez de
+   matar todas las transiciones se recorta la lista de propiedades: se va todo
+   lo que desplaza, escala o rota, y se quedan color y opacidad. */
+@media (prefers-reduced-motion: reduce) {
   .js .reveal {
     opacity: 1;
     transform: none;
@@ -61,7 +90,9 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 120ms !important;
+    transition-property: opacity, color, background-color, border-color,
+                         box-shadow, outline-color !important;
     scroll-behavior: auto !important;
   }
 }
@@ -173,19 +204,33 @@ a { color: var(--accent); }
   transition: background-color 180ms ease, border-color 180ms ease,
               color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
-.btn:hover {
-  border-color: var(--accent);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(18, 58, 92, 0.10);
+/* Solo donde hay puntero real: en touch el :hover queda pegado despues del
+   tap y el boton se quedaria levantado hasta que toques otra cosa. */
+@media (hover: hover) {
+  .btn:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(18, 58, 92, 0.10);
+  }
 }
-.btn:active { transform: translateY(0); box-shadow: none; }
+
+/* El feedback vive en el pointer-down y tiene que ser inmediato. Antes esto
+   deshacia el hover (volvia a translateY(0)), que se lee como "se apago" y no
+   como "lo aprete". */
+.btn:active {
+  transform: scale(0.97);
+  box-shadow: none;
+  transition-duration: 100ms;
+}
 
 .btn--solid {
   background: var(--accent);
   border-color: var(--accent);
   color: #ffffff;
 }
-.btn--solid:hover { background: #0e2f4a; border-color: #0e2f4a; }
+@media (hover: hover) {
+  .btn--solid:hover { background: #0e2f4a; border-color: #0e2f4a; }
+}
 
 .btn-icon {
   width: 15px;
@@ -502,10 +547,12 @@ a { color: var(--accent); }
   white-space: nowrap;
   transition: color 200ms ease, border-color 200ms ease, transform 200ms ease;
 }
-.chip:hover {
-  color: var(--accent);
-  border-color: var(--border-strong);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .chip:hover {
+    color: var(--accent);
+    border-color: var(--border-strong);
+    transform: translateY(-2px);
+  }
 }
 
 /* ---------------------------------------------------------
